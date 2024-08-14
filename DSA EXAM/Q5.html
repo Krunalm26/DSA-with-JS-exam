@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Program for Quick Sort</title>
+</head>
+
+<body>
+
+    <script>
+
+        function quickSort(array) {
+            // If the array has 0 or 1 elements, it is already sorted
+            if (array.length <= 1) {
+                return array;
+            }
+
+            // Choose a pivot element (in this case, we take the last element)
+            const pivot = array[array.length - 1];
+            const left = [];
+            const right = [];
+
+            // Partitioning the array into left and right arrays
+            for (let i = 0; i < array.length - 1; i++) {
+                if (array[i] < pivot) {
+                    left.push(array[i]);
+                } else {
+                    right.push(array[i]);
+                }
+            }
+
+            // Recursively apply the quick sort to the left and right arrays and concatenate
+            return [...quickSort(left), pivot, ...quickSort(right)];
+        }
+
+        // Example usage
+        const array = [10, 5, 2, 3, 7, 6, 1, 4, 9, 8];
+        const sortedArray = quickSort(array);
+        console.log(sortedArray); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+    </script>
+
+</body>
+
+</html>

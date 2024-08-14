@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Program for Searching An ELement In A Linked List</title>
+</head>
+<body>
+    
+<script>
+
+class Node {
+    constructor(data) {
+        this.data = data; // The value of the node
+        this.next = null; // Pointer to the next node
+    }
+}
+
+// Define a LinkedList class
+class LinkedList {
+    constructor() {
+        this.head = null; // Pointer to the head of the list
+    }
+
+    // Method to append a new node to the list
+    append(data) {
+        const newNode = new Node(data);
+        if (!this.head) {
+            this.head = newNode;
+            return;
+        }
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    // Method to search for an element in the list
+    search(data) {
+        let current = this.head; // Start from the head
+        while (current) {
+            if (current.data === data) {
+                return true; // Data found
+            }
+            current = current.next; // Move to the next node
+        }
+        return false; // Data not found
+    }
+
+    // Method to display the linked list
+    display() {
+        let current = this.head;
+        let result = '';
+        while (current) {
+            result += current.data + ' -> ';
+            current = current.next;
+        }
+        result += 'null';
+        console.log(result);
+    }
+}
+
+// Example usage:
+const linkedList = new LinkedList();
+linkedList.append(10);
+linkedList.append(20);
+linkedList.append(30);
+
+linkedList.display(); // Display the linked list
+
+const searchValue = 20; // Value to search for
+const found = linkedList.search(searchValue);
+if (found) {
+    console.log(`${searchValue} found in the linked list.`);
+} else {
+    console.log(`${searchValue} not found in the linked list.`);
+}
+</script>
+
+</body>
+</html>
